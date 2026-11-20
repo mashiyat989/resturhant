@@ -1,0 +1,2715 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rich Calories | Restaurant & Dining</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --skin: #f4e8d8;
+  --skin-light: #fffaf3;
+  --skin-dark: #e9d5bd;
+  --brown: #593b2b;
+  --brown-dark: #39251c;
+  --brown-light: #87634b;
+  --gold: #bd9464;
+  --white: #ffffff;
+  --text: #443329;
+  --muted: #8b796b;
+  --green: #32845c;
+  --red: #c35a50;
+  --orange: #d38b42;
+  --shadow: 0 12px 35px rgba(75, 49, 32, .09);
+  --radius: 18px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--skin-light);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* HEADER */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 80px;
+  background: rgba(255,250,243,.96);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 7%;
+  border-bottom: 1px solid var(--skin-dark);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.1;
+}
+
+.logo b {
+  color: var(--gold);
+}
+
+.logo small {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.logo-icon {
+  height: 44px;
+  width: 44px;
+  background: var(--brown);
+  color: var(--skin);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.header nav a {
+  font-size: 13px;
+  font-weight: 600;
+  transition: .25s;
+}
+
+.header nav a:hover {
+  color: var(--gold);
+}
+
+.nav-book, .admin-link {
+  border: none;
+  border-radius: 30px;
+  padding: 11px 17px;
+  font-weight: 700;
+  font-size: 12px;
+  background: var(--brown);
+  color: white;
+}
+
+.admin-link {
+  background: var(--skin-dark);
+  color: var(--brown);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  font-size: 25px;
+  color: var(--brown);
+}
+
+/* BUTTONS */
+
+.btn-primary, .btn-outline {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 9px;
+  padding: 14px 23px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .3s;
+  border: 1px solid var(--brown);
+}
+
+.btn-primary {
+  background: var(--brown);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--brown-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(57,37,28,.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--brown);
+}
+
+.btn-outline:hover {
+  background: var(--brown);
+  color: white;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.small-btn {
+  padding: 10px 15px;
+}
+
+/* HERO */
+
+.hero {
+  background: var(--skin);
+  padding: 65px 7%;
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.hero-content {
+  animation: fadeUp .8s ease;
+}
+
+.eyebrow {
+  color: var(--brown-light);
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--brown-dark);
+  font-size: clamp(43px, 5vw, 68px);
+  line-height: 1.12;
+  margin: 18px 0;
+}
+
+.hero h1 span, h2 span {
+  color: var(--gold);
+}
+
+.hero-content > p {
+  max-width: 500px;
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 27px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-info {
+  display: flex;
+  gap: 17px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+  color: var(--brown-light);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hero-image {
+  height: 420px;
+  position: relative;
+}
+
+.hero-image img {
+  height: 100%;
+  border-radius: 150px 150px 15px 15px;
+  box-shadow: var(--shadow);
+}
+
+.floating-card {
+  position: absolute;
+  bottom: 20px;
+  left: -30px;
+  padding: 20px;
+  background: var(--skin-light);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+}
+
+.floating-card span {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.floating-card b {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  color: var(--brown);
+  font-size: 18px;
+}
+
+/* QUICK INFORMATION */
+
+.quick-info {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  padding: 27px 7%;
+  background: var(--brown);
+  color: white;
+  gap: 20px;
+}
+
+.quick-info > div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.quick-info > div > span {
+  font-size: 24px;
+}
+
+.quick-info b, .quick-info small {
+  display: block;
+}
+
+.quick-info b {
+  font-size: 13px;
+}
+
+.quick-info small {
+  color: #ddc5af;
+  font-size: 11px;
+}
+
+/* GENERAL SECTIONS */
+
+.section {
+  padding: 85px 7%;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 38px;
+}
+
+.section-heading h2, .contact-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--brown);
+  font-size: clamp(30px, 4vw, 42px);
+  margin: 9px 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* TABLE AVAILABILITY */
+
+.availability-summary {
+  display: flex;
+  justify-content: center;
+  gap: 27px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.availability-summary > div {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.availability-summary b {
+  color: var(--brown);
+}
+
+.status-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.available { background: var(--green); }
+.reserved { background: var(--orange); }
+.occupied { background: var(--red); }
+.cleaning { background: #8793a1; }
+
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+}
+
+.table-card {
+  background: white;
+  border: 1px solid var(--skin-dark);
+  padding: 21px 15px;
+  border-radius: 13px;
+  text-align: center;
+  transition: .3s;
+}
+
+.table-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.table-card .table-icon {
+  font-size: 28px;
+  margin-bottom: 7px;
+}
+
+.table-card h3 {
+  color: var(--brown);
+  font-family: 'Playfair Display', serif;
+}
+
+.table-card p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.table-card .table-status {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 20px;
+  margin-top: 9px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.table-card .table-status.available {
+  color: var(--green);
+  background: #e5f3e9;
+}
+
+.table-card .table-status.reserved {
+  color: #a66b1c;
+  background: #fff0d6;
+}
+
+.table-card .table-status.occupied {
+  color: var(--red);
+  background: #fce9e7;
+}
+
+.table-card .table-status.cleaning {
+  color: #64748b;
+  background: #edf0f4;
+}
+
+.notice {
+  margin-top: 20px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* PANELS AND FORMS */
+
+.booking-section, .offer-section, .reviews-section {
+  background: var(--skin);
+}
+
+.panel {
+  background: white;
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--skin-dark);
+  box-shadow: var(--shadow);
+}
+
+.booking-form {
+  max-width: 850px;
+  margin: auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 19px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field label, .modal-box label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brown);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--skin-dark);
+  border-radius: 8px;
+  background: var(--skin-light);
+  color: var(--text);
+  outline: none;
+  font-size: 13px;
+  transition: .25s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(189,148,100,.13);
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.form-message {
+  font-size: 12px;
+  color: var(--green);
+  margin-top: 8px;
+}
+
+/* MENU */
+
+.menu-toolbar {
+  max-width: 950px;
+  margin: auto auto 30px;
+}
+
+#menuSearch {
+  margin-bottom: 15px;
+}
+
+.category-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-buttons button {
+  border: 1px solid var(--skin-dark);
+  border-radius: 30px;
+  padding: 9px 17px;
+  color: var(--brown);
+  background: white;
+  font-size: 12px;
+}
+
+.category-buttons button.active,
+.category-buttons button:hover {
+  background: var(--brown);
+  color: white;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 23px;
+}
+
+.food-card {
+  background: white;
+  border: 1px solid var(--skin-dark);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.food-card img {
+  height: 205px;
+}
+
+.food-info {
+  padding: 17px;
+}
+
+.food-info h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--brown);
+  font-size: 19px;
+}
+
+.food-info p {
+  color: var(--muted);
+  font-size: 12px;
+  min-height: 38px;
+  margin: 6px 0;
+}
+
+.food-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 13px;
+}
+
+.food-price {
+  color: var(--brown);
+  font-weight: 700;
+}
+
+.add-btn {
+  border: 0;
+  border-radius: 8px;
+  background: var(--brown);
+  color: white;
+  padding: 9px 13px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.add-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* OFFERS */
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.offer-card {
+  padding: 28px;
+  background: white;
+  border-radius: 15px;
+  border: 1px solid var(--skin-dark);
+  transition: .3s;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+}
+
+.offer-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  color: var(--brown);
+  margin: 15px 0 8px;
+}
+
+.offer-card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.offer-card > b {
+  display: inline-block;
+  background: var(--skin);
+  color: var(--brown);
+  padding: 8px 14px;
+  border: 1px dashed var(--gold);
+  margin: 18px 0 8px;
+  letter-spacing: 2px;
+}
+
+.offer-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.offer-tag {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.dark-offer {
+  background: var(--brown);
+}
+
+.dark-offer h3, .dark-offer p {
+  color: white;
+}
+
+/* DELIVERY */
+
+.delivery-layout {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 25px;
+  max-width: 1050px;
+  margin: auto;
+}
+
+.delivery-info {
+  background: var(--skin);
+}
+
+.big-icon {
+  font-size: 48px;
+}
+
+.delivery-info h3, .cart-panel h3 {
+  color: var(--brown);
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  margin: 12px 0;
+}
+
+.delivery-info p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.delivery-detail, .bill-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--skin-dark);
+  font-size: 12px;
+}
+
+.delivery-detail b, .bill-line b {
+  color: var(--brown);
+  text-align: right;
+}
+
+.cart-panel {
+  min-width: 0;
+}
+
+.empty-cart {
+  padding: 25px 5px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--skin-dark);
+}
+
+.cart-item-info b {
+  color: var(--brown);
+  font-size: 13px;
+}
+
+.cart-item-info small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantity-controls button {
+  height: 27px;
+  width: 27px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--skin);
+  color: var(--brown);
+  font-weight: 700;
+}
+
+.coupon-row {
+  display: flex;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.total-line {
+  border-top: 1px solid var(--brown);
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* FACILITIES */
+
+.facilities-section {
+  background: var(--skin);
+}
+
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px;
+}
+
+.facility-grid > div {
+  padding: 23px;
+  text-align: center;
+  background: white;
+  border: 1px solid var(--skin-dark);
+  border-radius: 12px;
+  font-size: 28px;
+}
+
+.facility-grid b, .facility-grid small {
+  display: block;
+}
+
+.facility-grid b {
+  font-size: 14px;
+  color: var(--brown);
+  margin-top: 8px;
+}
+
+.facility-grid small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* REVIEWS */
+
+.review-form {
+  max-width: 650px;
+  margin: auto;
+  display: grid;
+  gap: 13px;
+}
+
+.review-list {
+  max-width: 650px;
+  margin: 20px auto;
+}
+
+.review-card {
+  background: white;
+  border: 1px solid var(--skin-dark);
+  border-radius: 12px;
+  padding: 17px;
+  margin-bottom: 12px;
+}
+
+.review-card b {
+  color: var(--brown);
+}
+
+.review-card p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.review-stars {
+  color: var(--gold);
+}
+
+/* CONTACT */
+
+.contact-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.contact-section p {
+  color: var(--muted);
+  margin: 12px 0;
+  font-size: 13px;
+}
+
+.map-link {
+  margin-top: 17px;
+}
+
+.map-box {
+  min-height: 300px;
+  border-radius: 20px;
+  background: var(--skin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.map-box > span {
+  font-size: 50px;
+}
+
+.map-box h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--brown);
+}
+
+.map-box p {
+  margin: 4px;
+}
+
+.map-box a {
+  color: var(--brown-light);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 38px 7%;
+  background: var(--brown-dark);
+  color: #e9d5bd;
+  text-align: center;
+}
+
+.footer .logo {
+  color: white;
+  justify-content: center;
+}
+
+.footer p {
+  margin: 13px 0;
+  font-size: 13px;
+}
+
+.footer small {
+  font-size: 10px;
+  color: #c2a991;
+}
+
+/* MODALS */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(35,22,15,.72);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  overflow-y: auto;
+  backdrop-filter: blur(5px);
+}
+
+.modal.show {
+  display: flex;
+  animation: fadeIn .25s;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 500px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--skin-light);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 20px 80px rgba(0,0,0,.25);
+  animation: popup .3s ease;
+}
+
+.close-modal {
+  position: absolute;
+  right: 17px;
+  top: 12px;
+  border: none;
+  background: transparent;
+  color: var(--brown);
+  font-size: 28px;
+}
+
+.modal-box h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--brown);
+  font-size: 27px;
+  margin: 8px 0 18px;
+}
+
+.modal-box form {
+  display: grid;
+  gap: 9px;
+}
+
+.confirmation-box {
+  text-align: center;
+}
+
+.success-icon {
+  height: 65px;
+  width: 65px;
+  margin: 0 auto 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e3f1e6;
+  color: var(--green);
+  font-size: 33px;
+  font-weight: 700;
+}
+
+.confirmation-box > p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.confirmation-details {
+  background: white;
+  border: 1px solid var(--skin-dark);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 18px 0;
+  text-align: left;
+}
+
+.confirmation-details p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px solid var(--skin);
+}
+
+.confirmation-details p:last-child {
+  border: 0;
+}
+
+.confirmation-details b {
+  color: var(--brown);
+  text-align: right;
+}
+
+.arrival-banner {
+  background: var(--brown);
+  color: white;
+  border-radius: 13px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.arrival-banner span, .arrival-banner small {
+  display: block;
+  color: #e9d5bd;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.arrival-banner strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin: 5px;
+}
+
+.small-note {
+  font-size: 10px !important;
+  margin: 12px 0;
+}
+
+/* ADMIN */
+
+.admin-panel {
+  min-height: 100vh;
+  background: var(--skin-light);
+}
+
+.admin-header {
+  padding: 20px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--skin);
+  border-bottom: 1px solid var(--skin-dark);
+}
+
+.admin-content {
+  padding: 45px 7%;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  padding: 22px;
+  background: white;
+  border-radius: 13px;
+  border: 1px solid var(--skin-dark);
+}
+
+.stat-card small, .stat-card b {
+  display: block;
+}
+
+.stat-card small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat-card b {
+  color: var(--brown);
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  margin-top: 7px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.admin-tabs button {
+  border: 1px solid var(--skin-dark);
+  background: white;
+  color: var(--brown);
+  padding: 10px 17px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.admin-tabs button.active {
+  background: var(--brown);
+  color: white;
+}
+
+.admin-tab-content {
+  background: white;
+  border: 1px solid var(--skin-dark);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.admin-tab-content h3 {
+  color: var(--brown);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 17px;
+}
+
+.admin-record {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--skin-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.admin-record p {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.admin-record b {
+  color: var(--brown);
+}
+
+.admin-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.admin-actions button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--skin);
+  color: var(--brown);
+}
+
+.admin-actions button.danger {
+  background: #fce9e7;
+  color: var(--red);
+}
+
+.admin-table-control, .admin-menu-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--skin-dark);
+}
+
+.admin-table-control select {
+  max-width: 150px;
+}
+
+.admin-menu-control img {
+  height: 45px;
+  width: 50px;
+  border-radius: 6px;
+}
+
+.admin-menu-control > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-menu-control button {
+  border: 0;
+  padding: 8px;
+  background: var(--skin);
+  border-radius: 7px;
+  color: var(--brown);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popup {
+  from { opacity: 0; transform: translateY(20px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 950px) {
+  .header {
+    padding: 12px 5%;
+  }
+
+  .header nav {
+    gap: 12px;
+  }
+
+  .header nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 55px 5%;
+    gap: 25px;
+  }
+
+  .section {
+    padding: 70px 5%;
+  }
+}
+
+@media(max-width: 750px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .header nav {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    background: var(--skin-light);
+    border-bottom: 1px solid var(--skin-dark);
+    box-shadow: var(--shadow);
+  }
+
+  .header nav.open {
+    display: flex;
+  }
+
+  .header nav a {
+    font-size: 14px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 50px 6%;
+  }
+
+  .hero-image {
+    height: 330px;
+    margin-left: 15px;
+  }
+
+  .quick-info {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .table-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .food-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-layout, .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .admin-stats {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(max-width: 480px) {
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .hero-image {
+    height: 260px;
+  }
+
+  .floating-card {
+    left: -10px;
+    bottom: 10px;
+    padding: 13px;
+  }
+
+  .quick-info {
+    padding: 22px 5%;
+    gap: 18px 10px;
+  }
+
+  .quick-info > div > span {
+    font-size: 19px;
+  }
+
+  .quick-info b {
+    font-size: 11px;
+  }
+
+  .quick-info small {
+    font-size: 9px;
+  }
+
+  .section {
+    padding: 55px 5%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-card img {
+    height: 210px;
+  }
+
+  .facility-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .facility-grid > div {
+    padding: 15px 7px;
+  }
+
+  .admin-content {
+    padding: 30px 4%;
+  }
+
+  .admin-header {
+    padding: 15px 4%;
+  }
+
+  .modal-box {
+    padding: 23px 17px;
+  }
+
+  .admin-record {
+    align-items: flex-start;
+  }
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+<header class="header">
+  <a href="#home" class="logo">
+    <span class="logo-icon">RC</span>
+    <span>RICH <b>CALORIES</b><small>RESTAURANT & CAFE</small></span>
+  </a>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#tables">Tables</a>
+    <a href="#offers">Offers</a>
+    <a href="#delivery">Delivery</a>
+    <a href="#contact">Contact</a>
+    <button class="nav-book" onclick="goTo('booking')">Book a Table</button>
+    <button class="admin-link" onclick="showAdmin()">Admin</button>
+  </nav>
+</header>
+
+<main id="customerApp">
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow">✦ WELCOME TO RICH CALORIES ✦</span>
+    <h1>Good Food.<br><span>Beautiful Moments.</span></h1>
+    <p>Delicious food, unforgettable experiences and warm hospitality. Plan your visit or order your favourites from home.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="goTo('booking')">Reserve Your Table ↗</button>
+      <button class="btn-outline" onclick="goTo('menu')">Explore Menu</button>
+    </div>
+    <div class="hero-info">
+      <span>✦ Freshly Prepared</span>
+      <span>✦ Family Friendly</span>
+      <span>✦ Quality Ingredients</span>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000" alt="Restaurant interior">
+    <div class="floating-card">
+      <span>✦ YOUR TABLE AWAITS</span>
+      <b>Enjoy every moment.</b>
+    </div>
+  </div>
+</section>
+
+<section class="quick-info">
+  <div><span>📍</span><div><b>Our Location</b><small>Jauharabad, Punjab</small></div></div>
+  <div><span>🕒</span><div><b>Opening Hours</b><small id="openingText">12:00 PM – 11:00 PM</small></div></div>
+  <div><span>🍽️</span><div><b>Dine In</b><small>Reserve before arriving</small></div></div>
+  <div><span>🛵</span><div><b>Home Delivery</b><small>Order from your home</small></div></div>
+</section>
+
+<section class="section" id="tables">
+  <div class="section-heading">
+    <span class="eyebrow">PLAN YOUR VISIT</span>
+    <h2>Check Table <span>Availability</span></h2>
+    <p>Choose your preferred seating and check the table status before travelling.</p>
+  </div>
+
+  <div class="availability-summary">
+    <div><span class="status-dot available"></span> AVAILABLE <b id="availableCount">0</b></div>
+    <div><span class="status-dot reserved"></span> RESERVED<b id="reservedCount">0</b></div>
+    <div><span class="status-dot occupied"></span> OCCUPIED<b id="occupiedCount">0</b></div>
+    <div><span class="status-dot cleaning"></span> CLEANING<b id="cleaningCount">0</b></div>
+  </div>
+
+  <div class="table-grid" id="tableGrid"></div>
+  <p class="notice">* Table availability shown here is demonstration data. Confirm your booking to request a table.</p>
+</section>
+
+<section class="section booking-section" id="booking">
+  <div class="section-heading">
+    <span class="eyebrow">BOOK IN ADVANCE</span>
+    <h2>Reserve Your <span>Table</span></h2>
+    <p>Tell us when you're arriving and how many guests are joining you.</p>
+  </div>
+
+  <form class="booking-form panel" id="bookingForm">
+    <div class="form-grid">
+      <div class="field">
+        <label>Full Name *</label>
+        <input id="guestName" type="text" placeholder="Enter your name" required pattern="[A-Za-z ]{2,50}">
+      </div>
+      <div class="field">
+        <label>Phone Number *</label>
+        <input id="guestPhone" type="tel" placeholder="03XXXXXXXXX" pattern="03[0-9]{9}" required>
+      </div>
+      <div class="field">
+        <label>Number of Guests *</label>
+        <select id="guestCount" required>
+          <option value="1">1 Guest</option>
+          <option value="2" selected>2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+          <option value="5">5 Guests</option>
+          <option value="6">6 Guests</option>
+          <option value="7">7 Guests</option>
+          <option value="8">8 Guests</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Arrival Date *</label>
+        <input id="bookingDate" type="date" required>
+      </div>
+      <div class="field">
+        <label>Arrival Time *</label>
+        <input id="bookingTime" type="time" required>
+      </div>
+      <div class="field">
+        <label>Seating Preference</label>
+        <select id="seatPreference">
+          <option>Any Available Table</option>
+          <option>Family Section</option>
+          <option>Window Seating</option>
+          <option>Outdoor Seating</option>
+          <option>Quiet Corner</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label>Special Requests</label>
+        <textarea id="bookingNotes" placeholder="Birthday arrangement, baby chair or any other request..."></textarea>
+      </div>
+    </div>
+    <button class="btn-primary full-btn" type="submit">Check Availability & Reserve →</button>
+    <p class="form-message" id="bookingMessage"></p>
+  </form>
+</section>
+
+<section class="section" id="menu">
+  <div class="section-heading">
+    <span class="eyebrow">MADE WITH LOVE</span>
+    <h2>Explore Our <span>Menu</span></h2>
+    <p>Discover delicious choices for every appetite.</p>
+  </div>
+  <div class="menu-toolbar">
+    <input id="menuSearch" type="search" placeholder="Search your favourite food...">
+    <div class="category-buttons" id="categoryButtons"></div>
+  </div>
+  <div class="food-grid" id="foodGrid"></div>
+</section>
+
+<section class="section offer-section" id="offers">
+  <div class="section-heading">
+    <span class="eyebrow">SOMETHING SPECIAL</span>
+    <h2>Offers & <span>Discounts</span></h2>
+    <p>Enjoy special deals on selected items and dining experiences.</p>
+  </div>
+  <div class="offer-grid">
+    <article class="offer-card">
+      <span class="offer-tag">FAMILY SPECIAL</span>
+      <h3>Family Feast</h3>
+      <p>Enjoy a special discount on selected family meals.</p>
+      <b>FAMILY10</b>
+      <small>Demo coupon: 10% off eligible orders.</small>
+    </article>
+    <article class="offer-card dark-offer">
+      <span class="offer-tag">SPECIAL DEAL</span>
+      <h3>Foodie Treat</h3>
+      <p>Get a discount on your selected food order.</p>
+      <b>FOODIE15</b>
+      <small>Demo coupon: 15% off eligible orders.</small>
+    </article>
+    <article class="offer-card">
+      <span class="offer-tag">WEEKEND SPECIAL</span>
+      <h3>Weekend Moments</h3>
+      <p>Plan a delicious weekend with your loved ones.</p>
+      <b>WEEKEND</b>
+      <small>Offer subject to restaurant approval.</small>
+    </article>
+  </div>
+</section>
+
+<section class="section delivery-section" id="delivery">
+  <div class="section-heading">
+    <span class="eyebrow">FOOD AT YOUR DOORSTEP</span>
+    <h2>Order From <span>Home</span></h2>
+    <p>Choose your food, add your address and receive an estimated delivery time.</p>
+  </div>
+  <div class="delivery-layout">
+    <div class="delivery-info panel">
+      <span class="big-icon">🛵</span>
+      <h3>Fast & Convenient Delivery</h3>
+      <p>Place an order from our menu and we will calculate an estimated delivery time based on your order.</p>
+      <div class="delivery-detail"><span>Preparation time</span><b>Based on food items</b></div>
+      <div class="delivery-detail"><span>Delivery charges</span><b>Based on area</b></div>
+      <div class="delivery-detail"><span>Payment</span><b>Cash on Delivery</b></div>
+    </div>
+    <div class="cart-panel panel">
+      <h3>Your Shopping Cart</h3>
+      <div id="cartItems"><p class="empty-cart">Your cart is empty. Add something delicious!</p></div>
+      <div class="coupon-row">
+        <input id="couponInput" placeholder="Enter coupon code">
+        <button type="button" class="btn-outline small-btn" onclick="applyCoupon()">Apply</button>
+      </div>
+      <p id="couponMessage" class="form-message"></p>
+      <div class="bill-line"><span>Subtotal</span><b id="subtotal">Rs. 0</b></div>
+      <div class="bill-line"><span>Discount</span><b id="discount">Rs. 0</b></div>
+      <div class="bill-line"><span>Delivery charges</span><b id="deliveryFee">Rs. 0</b></div>
+      <div class="bill-line total-line"><span>Total</span><b id="total">Rs. 0</b></div>
+      <button class="btn-primary full-btn" onclick="openCheckout()">Proceed to Checkout →</button>
+    </div>
+  </div>
+</section>
+
+<section class="section facilities-section">
+  <div class="section-heading">
+    <span class="eyebrow">YOUR COMFORT MATTERS</span>
+    <h2>Restaurant <span>Facilities</span></h2>
+  </div>
+  <div class="facility-grid">
+    <div>👨‍👩‍👧‍👦<b>Family Seating</b><small>Family-friendly environment</small></div>
+    <div>❄️<b>Air Conditioning</b><small>Comfortable dining</small></div>
+    <div>🚗<b>Parking</b><small>Ask about parking availability</small></div>
+    <div>🧒<b>Kids Friendly</b><small>Family dining arrangements</small></div>
+    <div>🧼<b>Clean Environment</b><small>Restaurant hygiene information</small></div>
+    <div>🎂<b>Celebrations</b><small>Birthday and event requests</small></div>
+  </div>
+</section>
+
+<section class="section reviews-section">
+  <div class="section-heading">
+    <span class="eyebrow">CUSTOMER EXPERIENCES</span>
+    <h2>Share Your <span>Feedback</span></h2>
+  </div>
+  <form id="reviewForm" class="panel review-form">
+    <input id="reviewName" placeholder="Your name" required>
+    <select id="reviewRating">
+      <option value="5">★★★★★ Excellent</option>
+      <option value="4">★★★★ Very Good</option>
+      <option value="3">★★★ Good</option>
+      <option value="2">★★ Fair</option>
+      <option value="1">★ Needs Improvement</option>
+    </select>
+    <textarea id="reviewText" placeholder="Tell us about your experience..." required></textarea>
+    <button class="btn-primary" type="submit">Submit Review</button>
+  </form>
+  <div id="reviewList" class="review-list"></div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div>
+    <span class="eyebrow">COME VISIT US</span>
+    <h2>Find <span>Rich Calories</span></h2>
+    <p>Visit us in Jauharabad, Punjab, Pakistan.</p>
+    <p>📍 Jauharabad, Khushab District, Punjab, Pakistan</p>
+    <p>🕒 Opening hours: 12 PM – 11 PM (demo hours)</p>
+    <p>📞 Add your official restaurant phone number here.</p>
+    <a class="btn-primary map-link" href="https://www.google.com/maps/search/?api=1&query=restaurants+Jauharabad+Punjab+Pakistan" target="_blank">Find on Google Maps ↗</a>
+  </div>
+  <div class="map-box">
+    <span>📍</span>
+    <h3>Rich Calories</h3>
+    <p>Jauharabad, Punjab</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Rich+Calories+Jauharabad" target="_blank">Open directions ↗</a>
+  </div>
+</section>
+
+</main>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal('checkoutModal')">×</button>
+    <span class="eyebrow">DELIVERY DETAILS</span>
+    <h2>Complete Your <span>Order</span></h2>
+    <form id="checkoutForm">
+      <label>Customer Name</label>
+      <input id="deliveryName" required placeholder="Full name">
+      <label>Mobile Number</label>
+      <input id="deliveryPhone" required pattern="03[0-9]{9}" placeholder="03XXXXXXXXX">
+      <label>Delivery Address</label>
+      <textarea id="deliveryAddress" required placeholder="House, street, area and city"></textarea>
+      <label>Delivery Area</label>
+      <select id="deliveryArea">
+        <option value="100">Jauharabad Main Area — Rs. 100</option>
+        <option value="150">Nearby Areas — Rs. 150</option>
+        <option value="200">Outer Areas — Rs. 200</option>
+      </select>
+      <label>Preferred Delivery Time</label>
+      <select id="deliveryPreference">
+        <option value="asap">As soon as possible</option>
+        <option value="scheduled">I want to schedule my order</option>
+      </select>
+      <div id="scheduledTimeBox" class="hidden">
+        <label>Preferred Time</label>
+        <input type="datetime-local" id="scheduledTime">
+      </div>
+      <label>Payment Method</label>
+      <select id="paymentMethod">
+        <option>Cash on Delivery</option>
+        <option>Cash at Restaurant</option>
+        <option>Easypaisa (manual confirmation required)</option>
+        <option>JazzCash (manual confirmation required)</option>
+      </select>
+      <button class="btn-primary full-btn" type="submit">Place My Order →</button>
+    </form>
+  </div>
+</div>
+
+<!-- CONFIRMATION MODAL -->
+<div class="modal" id="confirmationModal">
+  <div class="modal-box confirmation-box">
+    <div class="success-icon">✓</div>
+    <span class="eyebrow" id="confirmEyebrow">SUCCESSFULLY SUBMITTED</span>
+    <h2 id="confirmTitle">Your Request is <span>Confirmed!</span></h2>
+    <p id="confirmDescription"></p>
+    <div class="confirmation-details" id="confirmationDetails"></div>
+    <div class="arrival-banner">
+      <span id="arrivalLabel">PLEASE ARRIVE AT</span>
+      <strong id="arrivalTime">--:--</strong>
+      <small id="arrivalSubtext"></small>
+    </div>
+    <p class="small-note">Please save your reference ID for future communication. Staff confirmation is required for actual bookings and orders.</p>
+    <button class="btn-primary full-btn" onclick="closeModal('confirmationModal')">Done</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<section id="adminPanel" class="admin-panel hidden">
+  <header class="admin-header">
+    <div class="logo"><span class="logo-icon">RC</span><span>RICH <b>ADMIN</b></span></div>
+    <button class="btn-outline" onclick="hideAdmin()">← Customer Website</button>
+  </header>
+  <div class="admin-content">
+    <div class="section-heading">
+      <span class="eyebrow">RESTAURANT CONTROL CENTRE</span>
+      <h2>Admin <span>Dashboard</span></h2>
+      <p>Manage your restaurant bookings, tables, orders and operations.</p>
+    </div>
+    <div class="admin-stats">
+      <div class="stat-card"><small>Reservations</small><b id="adminBookings">0</b></div>
+      <div class="stat-card"><small>Food Orders</small><b id="adminOrders">0</b></div>
+      <div class="stat-card"><small>Occupied Tables</small><b id="adminOccupied">0</b></div>
+      <div class="stat-card"><small>Sales (demo)</small><b id="adminSales">Rs. 0</b></div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="active" data-tab="reservations">Reservations</button>
+      <button data-tab="orders">Orders</button>
+      <button data-tab="tablesAdmin">Tables</button>
+      <button data-tab="menuAdmin">Menu</button>
+    </div>
+
+    <div class="admin-tab-content" id="reservations">
+      <h3>Customer Reservations</h3>
+      <div id="adminBookingList"></div>
+    </div>
+    <div class="admin-tab-content hidden" id="orders">
+      <h3>Food Delivery Orders</h3>
+      <div id="adminOrderList"></div>
+    </div>
+    <div class="admin-tab-content hidden" id="tablesAdmin">
+      <h3>Manage Table Status</h3>
+      <div id="adminTableList" class="table-grid"></div>
+    </div>
+    <div class="admin-tab-content hidden" id="menuAdmin">
+      <h3>Manage Food Availability</h3>
+      <div id="adminMenuList"></div>
+    </div>
+    <button class="btn-outline" onclick="resetDemoData()">Reset Demo Data</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="#home" class="logo"><span class="logo-icon">RC</span><span>RICH <b>CALORIES</b></span></a>
+  <p>Good food brings people together.</p>
+  <small>© 2026 Rich Calories. Restaurant website demo.</small>
+</footer>
+
+<script src="script.js">
+
+/* ==========================================
+   RICH CALORIES - RESTAURANT MANAGEMENT
+   HTML + CSS + VANILLA JAVASCRIPT
+========================================== */
+
+const $ = id => document.getElementById(id);
+
+const save = (key, value) =>
+  localStorage.setItem(key, JSON.stringify(value));
+
+const load = (key, fallback) => {
+  try {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+const money = value =>
+  "Rs. " + Math.round(value).toLocaleString("en-PK");
+
+function makeId(prefix) {
+  return prefix + "-" + Date.now().toString().slice(-8);
+}
+
+// MENU DATA
+const defaultMenu = [
+  {id:1,name:"Classic Beef Burger",category:"Burgers",price:650,prep:18,available:true,desc:"Juicy beef patty with fresh vegetables.",image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"},
+  {id:2,name:"Chicken Zinger",category:"Burgers",price:550,prep:15,available:true,desc:"Crispy chicken with special sauce.",image:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600"},
+  {id:3,name:"Special Pizza",category:"Pizza",price:1400,prep:25,available:true,desc:"Loaded with cheese and fresh toppings.",image:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"},
+  {id:4,name:"Pepperoni Pizza",category:"Pizza",price:1600,prep:25,available:true,desc:"Classic pizza with rich flavours.",image:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600"},
+  {id:5,name:"Chicken Biryani",category:"Pakistani",price:450,prep:15,available:true,desc:"Aromatic rice with delicious chicken.",image:"https://images.unsplash.com/photo-1563379091339-03246963d51a?w=600"},
+  {id:6,name:"Chicken Karahi",category:"Pakistani",price:1450,prep:35,available:true,desc:"Traditional spicy chicken karahi.",image:"https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600"},
+  {id:7,name:"Chicken Chowmein",category:"Chinese",price:700,prep:20,available:true,desc:"Stir-fried noodles with vegetables.",image:"https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600"},
+  {id:8,name:"Chicken Fried Rice",category:"Chinese",price:650,prep:20,available:true,desc:"Delicious rice with chicken and vegetables.",image:"https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600"},
+  {id:9,name:"Chocolate Shake",category:"Drinks",price:300,prep:8,available:true,desc:"Creamy chocolate milkshake.",image:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600"},
+  {id:10,name:"Fresh Lemonade",category:"Drinks",price:180,prep:5,available:true,desc:"Refreshing fresh lemonade.",image:"https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=600"},
+  {id:11,name:"Chocolate Brownie",category:"Desserts",price:350,prep:8,available:true,desc:"Rich chocolate dessert.",image:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600"},
+  {id:12,name:"Ice Cream",category:"Desserts",price:250,prep:5,available:true,desc:"A sweet and creamy treat.",image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600"}
+];
+
+const defaultTables = [
+  {id:"T01",capacity:2,status:"Available",area:"Window"},
+  {id:"T02",capacity:2,status:"Occupied",area:"Indoor"},
+  {id:"T03",capacity:4,status:"Available",area:"Family"},
+  {id:"T04",capacity:4,status:"Reserved",area:"Indoor"},
+  {id:"T05",capacity:4,status:"Available",area:"Window"},
+  {id:"T06",capacity:6,status:"Available",area:"Family"},
+  {id:"T07",capacity:6,status:"Cleaning",area:"Indoor"},
+  {id:"T08",capacity:8,status:"Available",area:"Family"},
+  {id:"T09",capacity:2,status:"Available",area:"Outdoor"},
+  {id:"T10",capacity:4,status:"Occupied",area:"Outdoor"},
+  {id:"T11",capacity:6,status:"Available",area:"Family"},
+  {id:"T12",capacity:8,status:"Available",area:"Family"}
+];
+
+let menu = load("rc_menu", defaultMenu);
+let tables = load("rc_tables", defaultTables);
+let bookings = load("rc_bookings", []);
+let orders = load("rc_orders", []);
+let reviews = load("rc_reviews", []);
+let cart = load("rc_cart", []);
+let activeCategory = "All";
+let coupon = "";
+let currentAdminTab = "reservations";
+
+// SAVE FUNCTIONS
+function saveAll() {
+  save("rc_menu", menu);
+  save("rc_tables", tables);
+  save("rc_bookings", bookings);
+  save("rc_orders", orders);
+  save("rc_reviews", reviews);
+  save("rc_cart", cart);
+}
+
+// INITIALIZE
+document.addEventListener("DOMContentLoaded", () => {
+
+  const today = new Date();
+  const localToday = new Date(
+    today.getTime() - today.getTimezoneOffset() * 60000
+  ).toISOString().split("T")[0];
+
+  $("bookingDate").min = localToday;
+  $("bookingDate").value = localToday;
+
+  $("scheduledTime").min =
+    new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+      .toISOString().slice(0,16);
+
+  renderTables();
+  renderMenu();
+  renderCart();
+  renderReviews();
+  renderAdmin();
+
+  $("menuToggle").addEventListener("click", () => {
+    $("nav").classList.toggle("open");
+  });
+
+  document.querySelectorAll("#nav a").forEach(link => {
+    link.addEventListener("click", () =>
+      $("nav").classList.remove("open")
+    );
+  });
+
+  $("menuSearch").addEventListener("input", renderMenu);
+
+  $("bookingForm").addEventListener("submit", handleBooking);
+
+  $("checkoutForm").addEventListener("submit", handleOrder);
+
+  $("reviewForm").addEventListener("submit", handleReview);
+
+  $("deliveryArea").addEventListener("change", renderCart);
+
+  $("deliveryPreference").addEventListener("change", () => {
+    $("scheduledTimeBox").classList.toggle(
+      "hidden",
+      $("deliveryPreference").value !== "scheduled"
+    );
+  });
+
+  document.querySelectorAll(".admin-tabs button").forEach(btn => {
+    btn.addEventListener("click", () => switchAdminTab(btn.dataset.tab));
+  });
+
+  document.querySelectorAll(".modal").forEach(modal => {
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeModal(modal.id);
+    });
+  });
+
+});
+
+// NAVIGATION
+function goTo(id) {
+  $(id).scrollIntoView({behavior:"smooth"});
+  $("nav").classList.remove("open");
+}
+
+// MODALS
+function openModal(id) {
+  $(id).classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(id) {
+  $(id).classList.remove("show");
+
+  if (!document.querySelector(".modal.show")) {
+    document.body.style.overflow = "";
+  }
+}
+
+// TABLE SYSTEM
+function renderTables() {
+
+  $("tableGrid").innerHTML = tables.map(table => `
+    <div class="table-card">
+      <div class="table-icon">🪑</div>
+      <h3>${table.id}</h3>
+      <p>${table.capacity} Guests</p>
+      <p>${table.area} Seating</p>
+      <span class="table-status ${table.status.toLowerCase()}">
+        ${table.status}
+      </span>
+    </div>
+  `).join("");
+
+  $("availableCount").textContent =
+    tables.filter(t=>t.status==="Available").length;
+
+  $("reservedCount").textContent =
+    tables.filter(t=>t.status==="Reserved").length;
+
+  $("occupiedCount").textContent =
+    tables.filter(t=>t.status==="Occupied").length;
+
+  $("cleaningCount").textContent =
+    tables.filter(t=>t.status==="Cleaning").length;
+
+  saveAll();
+}
+
+// BOOKING SYSTEM
+function handleBooking(event) {
+  event.preventDefault();
+
+  const name = $("guestName").value.trim();
+  const phone = $("guestPhone").value.trim();
+  const guests = Number($("guestCount").value);
+  const date = $("bookingDate").value;
+  const time = $("bookingTime").value;
+  const preference = $("seatPreference").value;
+
+  if (!/^[A-Za-z ]{2,50}$/.test(name)) {
+    alert("Please enter a valid name using alphabets only.");
+    return;
+  }
+
+  if (!/^03\d{9}$/.test(phone)) {
+    alert("Enter a valid Pakistani mobile number, e.g. 03001234567.");
+    return;
+  }
+
+  if (!date || !time) {
+    alert("Please select your arrival date and time.");
+    return;
+  }
+
+  const requested = new Date(`${date}T${time}`);
+  const now = new Date();
+
+  if (requested <= now) {
+    alert("Please select a future arrival time.");
+    return;
+  }
+
+  const selectedHour = requested.getHours();
+
+  if (selectedHour < 12 || selectedHour >= 23) {
+    alert("Demo restaurant hours are 12 PM to 11 PM.");
+    return;
+  }
+
+  // Find suitable table
+  const suitable = tables.filter(t =>
+    t.status === "Available" &&
+    t.capacity >= guests &&
+    (preference === "Any Available Table" ||
+     t.area === preference.replace(" Seating",""))
+  );
+
+  if (!suitable.length) {
+    $("bookingMessage").textContent =
+      "No suitable table is currently available. Please try another seating preference or time.";
+    return;
+  }
+
+  const table = suitable.sort((a,b) =>
+    a.capacity-b.capacity
+  )[0];
+
+  // Create reservation
+  const booking = {
+    id:makeId("RCB"),
+    name,
+    phone,
+    guests,
+    date,
+    time,
+    preference,
+    notes:$("bookingNotes").value,
+    table:table.id,
+    status:"Pending Confirmation",
+    created:new Date().toISOString()
+  };
+
+  bookings.push(booking);
+
+  // Reserve table in demo
+  table.status = "Reserved";
+
+  saveAll();
+  renderTables();
+  renderAdmin();
+
+  const formattedDate = new Date(date+"T00:00:00")
+    .toLocaleDateString("en-PK",{
+      day:"numeric",month:"long",year:"numeric"
+    });
+
+  showConfirmation({
+    type:"booking",
+    title:"Your Table Request!",
+    description:"Your reservation request has been submitted successfully.",
+    rows:[
+      ["Booking ID",booking.id],
+      ["Customer",name],
+      ["Guests",guests],
+      ["Table",table.id],
+      ["Date",formattedDate],
+      ["Status","Pending staff confirmation"]
+    ],
+    time:formatTime(time),
+    label:"YOUR REQUESTED ARRIVAL TIME",
+    subtext:"Please arrive at the selected time."
+  });
+
+  $("bookingForm").reset();
+
+  $("bookingDate").value =
+    new Date().toISOString().split("T")[0];
+}
+
+// TIME FORMAT
+function formatTime(time) {
+  const [h,m] = time.split(":").map(Number);
+  return new Date(2000,0,1,h,m).toLocaleTimeString("en-PK",{
+    hour:"numeric",
+    minute:"2-digit"
+  });
+}
+
+// CONFIRMATION DISPLAY
+function showConfirmation(data) {
+
+  $("confirmEyebrow").textContent =
+    data.type === "booking" ? "RESERVATION SUBMITTED" : "ORDER SUBMITTED";
+
+  $("confirmTitle").innerHTML =
+    data.title.replace("!", ' <span>✓</span>');
+
+  $("confirmDescription").textContent = data.description;
+
+  $("confirmationDetails").innerHTML =
+    data.rows.map(row => `
+      <p><span>${row[0]}</span><b>${row[1]}</b></p>
+    `).join("");
+
+  $("arrivalLabel").textContent = data.label;
+  $("arrivalTime").textContent = data.time;
+  $("arrivalSubtext").textContent = data.subtext;
+
+  openModal("confirmationModal");
+}
+
+// MENU SYSTEM
+function renderMenu() {
+
+  const categories = ["All",...new Set(menu.map(item=>item.category))];
+
+  $("categoryButtons").innerHTML = categories.map(category => `
+    <button class="${activeCategory===category?"active":""}"
+      onclick="selectCategory('${category}')">
+      ${category}
+    </button>
+  `).join("");
+
+  const search = $("menuSearch").value.toLowerCase();
+
+  const filtered = menu.filter(item =>
+    (activeCategory==="All" || item.category===activeCategory) &&
+    item.name.toLowerCase().includes(search)
+  );
+
+  $("foodGrid").innerHTML = filtered.length ? filtered.map(item => `
+    <article class="food-card">
+      <img src="${item.image}" alt="${item.name}"
+        onerror="this.src='https://placehold.co/600x400/f4e8d8/593b2b?text=Rich+Calories'">
+      <div class="food-info">
+        <h3>${item.name}</h3>
+        <p>${item.desc}</p>
+        <small>⏱ ${item.prep} min preparation</small>
+        <div class="food-bottom">
+          <span class="food-price">${money(item.price)}</span>
+          <button class="add-btn"
+            ${!item.available?"disabled":""}
+            onclick="addToCart(${item.id})">
+            ${item.available?"＋ Add":"Unavailable"}
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("") : "<p>No food items found.</p>";
+}
+
+function selectCategory(category) {
+  activeCategory = category;
+  renderMenu();
+}
+
+// CART SYSTEM
+function addToCart(id) {
+
+  const item = menu.find(m=>m.id===id);
+
+  if (!item || !item.available) return;
+
+  const existing = cart.find(c=>c.id===id);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({...item,quantity:1});
+  }
+
+  saveAll();
+  renderCart();
+  $("delivery").scrollIntoView({behavior:"smooth"});
+}
+
+function changeQuantity(id, amount) {
+
+  const item = cart.find(c=>c.id===id);
+
+  if (!item) return;
+
+  item.quantity += amount;
+
+  if (item.quantity <= 0) {
+    cart = cart.filter(c=>c.id!==id);
+  }
+
+  saveAll();
+  renderCart();
+}
+
+function calculateBill() {
+
+  const subtotal = cart.reduce(
+    (sum,item)=>sum+item.price*item.quantity,0
+  );
+
+  const fee = cart.length ? Number($("deliveryArea").value) : 0;
+
+  let rate = 0;
+
+  if (coupon === "FAMILY10") rate = .10;
+  if (coupon === "FOODIE15") rate = .15;
+
+  const discount = subtotal*rate;
+
+  return {
+    subtotal,
+    discount,
+    fee,
+    total:subtotal-discount+fee
+  };
+}
+
+function renderCart() {
+
+  if (!cart.length) {
+    $("cartItems").innerHTML =
+      '<p class="empty-cart">Your cart is empty. Add something delicious!</p>';
+  } else {
+
+    $("cartItems").innerHTML = cart.map(item=>`
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <b>${item.name}</b>
+          <small>${money(item.price)} × ${item.quantity}</small>
+        </div>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity(${item.id},-1)">−</button>
+          <b>${item.quantity}</b>
+          <button onclick="changeQuantity(${item.id},1)">+</button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  const bill = calculateBill();
+
+  $("subtotal").textContent = money(bill.subtotal);
+  $("discount").textContent = money(bill.discount);
+  $("deliveryFee").textContent = money(bill.fee);
+  $("total").textContent = money(bill.total);
+}
+
+function applyCoupon() {
+
+  const value = $("couponInput").value.trim().toUpperCase();
+
+  if (value === "FAMILY10" || value === "FOODIE15") {
+
+    coupon = value;
+
+    $("couponMessage").textContent =
+      value + " applied successfully!";
+
+  } else {
+
+    coupon = "";
+
+    $("couponMessage").textContent =
+      "Invalid coupon code. Try FAMILY10 or FOODIE15.";
+  }
+
+  renderCart();
+}
+
+// CHECKOUT
+function openCheckout() {
+
+  if (!cart.length) {
+    alert("Your cart is empty. Please add food items first.");
+    return;
+  }
+
+  $("deliveryName").value = $("guestName").value;
+  $("deliveryPhone").value = $("guestPhone").value;
+
+  openModal("checkoutModal");
+}
+
+function handleOrder(event) {
+
+  event.preventDefault();
+
+  if (!cart.length) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  const name = $("deliveryName").value.trim();
+  const phone = $("deliveryPhone").value.trim();
+  const address = $("deliveryAddress").value.trim();
+
+  if (!/^[A-Za-z ]{2,50}$/.test(name)) {
+    alert("Enter a valid customer name.");
+    return;
+  }
+
+  if (!/^03\d{9}$/.test(phone)) {
+    alert("Enter a valid Pakistani phone number.");
+    return;
+  }
+
+  if (address.length < 8) {
+    alert("Please enter your complete delivery address.");
+    return;
+  }
+
+  const preference = $("deliveryPreference").value;
+  let scheduled = null;
+
+  if (preference === "scheduled") {
+
+    scheduled = $("scheduledTime").value;
+
+    if (!scheduled || new Date(scheduled) <= new Date()) {
+      alert("Please select a valid future delivery time.");
+      return;
+    }
+  }
+
+  const bill = calculateBill();
+
+  const prepTime = Math.max(
+    ...cart.map(item=>item.prep)
+  );
+
+  // Estimated delivery travel time
+  const travelTime = Math.ceil(bill.fee/25)+5;
+
+  const totalMinutes = prepTime+travelTime;
+
+  const order = {
+    id:makeId("RCO"),
+    name,
+    phone,
+    address,
+    items:cart.map(item=>({...item})),
+    subtotal:bill.subtotal,
+    discount:bill.discount,
+    fee:bill.fee,
+    total:bill.total,
+    preparationTime:prepTime,
+    deliveryTime:travelTime,
+    estimatedMinutes:totalMinutes,
+    payment:$("paymentMethod").value,
+    status:"Pending",
+    scheduled,
+    created:new Date().toISOString()
+  };
+
+  orders.push(order);
+
+  saveAll();
+  renderAdmin();
+
+  closeModal("checkoutModal");
+
+  const arrival = new Date(
+    Date.now()+totalMinutes*60000
+  );
+
+  const estimatedTime = arrival.toLocaleTimeString("en-PK",{
+    hour:"numeric",
+    minute:"2-digit"
+  });
+
+  showConfirmation({
+    type:"order",
+    title:"Your Order is Ready!",
+    description:"Your food order has been submitted. Our restaurant staff will review it shortly.",
+    rows:[
+      ["Order ID",order.id],
+      ["Customer",name],
+      ["Order Total",money(order.total)],
+      ["Payment",order.payment],
+      ["Delivery Area",address],
+      ["Status","Pending restaurant acceptance"]
+    ],
+    time:scheduled ? new Date(scheduled).toLocaleTimeString("en-PK",{
+      hour:"numeric",minute:"2-digit"
+    }) : estimatedTime,
+    label:scheduled ? "YOUR REQUESTED DELIVERY TIME" : "ESTIMATED DELIVERY TIME",
+    subtext:scheduled
+      ? "Scheduled time requested. Staff confirmation required."
+      : "Estimated in approximately "+totalMinutes+" minutes."
+  });
+
+  cart = [];
+  coupon = "";
+  $("couponInput").value = "";
+  $("checkoutForm").reset();
+
+  saveAll();
+  renderCart();
+}
+
+/* ==========================================
+   CUSTOMER REVIEWS
+========================================== */
+
+function handleReview(event) {
+
+  event.preventDefault();
+
+  const review = {
+    name:$("reviewName").value.trim(),
+    rating:Number($("reviewRating").value),
+    message:$("reviewText").value.trim(),
+    date:new Date().toLocaleDateString()
+  };
+
+  reviews.unshift(review);
+
+  saveAll();
+  renderReviews();
+
+  $("reviewForm").reset();
+
+  alert("Thank you! Your feedback has been saved.");
+}
+
+function renderReviews() {
+
+  $("reviewList").innerHTML = reviews.map(review=>`
+    <div class="review-card">
+      <b>${escapeHTML(review.name)}</b>
+      <span class="review-stars">${"★".repeat(review.rating)}</span>
+      <p>${escapeHTML(review.message)}</p>
+      <small>${review.date}</small>
+    </div>
+  `).join("");
+}
+
+// Basic HTML escaping for customer-entered text
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
+
+/* ==========================================
+   ADMIN DASHBOARD
+========================================== */
+
+function showAdmin() {
+
+  const password = prompt("Enter demo admin password:");
+
+  // Change this password before real deployment
+  if (password !== "admin123") {
+    alert("Incorrect password.");
+    return;
+  }
+
+  $("customerApp").classList.add("hidden");
+  $("adminPanel").classList.remove("hidden");
+  $("nav").classList.remove("open");
+
+  renderAdmin();
+
+  window.scrollTo(0,0);
+}
+
+function hideAdmin() {
+
+  $("adminPanel").classList.add("hidden");
+  $("customerApp").classList.remove("hidden");
+
+  window.scrollTo(0,0);
+}
+
+function switchAdminTab(tab) {
+
+  currentAdminTab = tab;
+
+  document.querySelectorAll(".admin-tab-content").forEach(el=>{
+    el.classList.add("hidden");
+  });
+
+  $(tab).classList.remove("hidden");
+
+  document.querySelectorAll(".admin-tabs button").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.tab===tab);
+  });
+}
+
+function renderAdmin() {
+
+  $("adminBookings").textContent = bookings.length;
+  $("adminOrders").textContent = orders.length;
+
+  $("adminOccupied").textContent =
+    tables.filter(t=>t.status==="Occupied").length;
+
+  $("adminSales").textContent = money(
+    orders.filter(o=>o.status==="Completed")
+      .reduce((sum,o)=>sum+o.total,0)
+  );
+
+  renderAdminBookings();
+  renderAdminOrders();
+  renderAdminTables();
+  renderAdminMenu();
+}
+
+function renderAdminBookings() {
+
+  if (!bookings.length) {
+    $("adminBookingList").innerHTML = "<p>No reservations yet.</p>";
+    return;
+  }
+
+  $("adminBookingList").innerHTML = bookings.map((booking,index)=>`
+    <div class="admin-record">
+      <div>
+        <b>${escapeHTML(booking.name)}</b>
+        <p>${booking.id} | ${booking.phone}</p>
+        <p>${booking.guests} guests | Table ${booking.table}</p>
+        <p>${booking.date} at ${formatTime(booking.time)}</p>
+        <p>Status: ${booking.status}</p>
+      </div>
+      <div class="admin-actions">
+        <button onclick="updateBooking(${index},'Confirmed')">Confirm</button>
+        <button onclick="updateBooking(${index},'Arrived')">Arrived</button>
+        <button onclick="updateBooking(${index},'Completed')">Complete</button>
+        <button class="danger" onclick="updateBooking(${index},'Cancelled')">Cancel</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function updateBooking(index,status) {
+
+  const booking = bookings[index];
+
+  if (!booking) return;
+
+  booking.status = status;
+
+  const table = tables.find(t=>t.id===booking.table);
+
+  if (table) {
+
+    if (status==="Arrived") table.status="Occupied";
+
+    if (status==="Completed" || status==="Cancelled") {
+      table.status="Cleaning";
+    }
+  }
+
+  saveAll();
+  renderTables();
+  renderAdmin();
+}
+
+function renderAdminOrders() {
+
+  if (!orders.length) {
+    $("adminOrderList").innerHTML = "<p>No orders yet.</p>";
+    return;
+  }
+
+  $("adminOrderList").innerHTML = orders.map((order,index)=>`
+    <div class="admin-record">
+      <div>
+        <b>${escapeHTML(order.name)}</b>
+        <p>${order.id} | ${order.phone}</p>
+        <p>${order.items.map(i=>i.name+" × "+i.quantity).join(", ")}</p>
+        <p>${escapeHTML(order.address)}</p>
+        <p>Total: ${money(order.total)}</p>
+        <p>Status: ${order.status}</p>
+      </div>
+      <div class="admin-actions">
+        <button onclick="updateOrder(${index},'Accepted')">Accept</button>
+        <button onclick="updateOrder(${index},'Preparing')">Preparing</button>
+        <button onclick="updateOrder(${index},'Out for Delivery')">Out for Delivery</button>
+        <button onclick="updateOrder(${index},'Completed')">Delivered</button>
+        <button class="danger" onclick="updateOrder(${index},'Cancelled')">Cancel</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function updateOrder(index,status) {
+
+  if (!orders[index]) return;
+
+  orders[index].status = status;
+
+  saveAll();
+  renderAdmin();
+}
+
+function renderAdminTables() {
+
+  $("adminTableList").innerHTML = tables.map((table,index)=>`
+    <div class="admin-table-control">
+      <div>
+        <b>${table.id}</b>
+        <small>${table.capacity} guests · ${table.area}</small>
+      </div>
+      <select onchange="updateTable(${index},this.value)">
+        ${["Available","Reserved","Occupied","Cleaning"].map(status=>`
+          <option ${table.status===status?"selected":""}>${status}</option>
+        `).join("")}
+      </select>
+    </div>
+  `).join("");
+}
+
+function updateTable(index,status) {
+
+  tables[index].status = status;
+
+  saveAll();
+  renderTables();
+  renderAdmin();
+}
+
+function renderAdminMenu() {
+
+  $("adminMenuList").innerHTML = menu.map(item=>`
+    <div class="admin-menu-control">
+      <div>
+        <img src="${item.image}" alt="">
+        <div>
+          <b>${item.name}</b>
+          <small>${money(item.price)}</small>
+        </div>
+      </div>
+      <button onclick="toggleFood(${item.id})">
+        ${item.available?"Mark Unavailable":"Mark Available"}
+      </button>
+    </div>
+  `).join("");
+}
+
+function toggleFood(id) {
+
+  const item = menu.find(m=>m.id===id);
+
+  if (!item) return;
+
+  item.available = !item.available;
+
+  saveAll();
+  renderMenu();
+  renderAdminMenu();
+}
+
+function resetDemoData() {
+
+  if (!confirm("Reset all demo reservations, orders, reviews, tables and menu settings?")) {
+    return;
+  }
+
+  localStorage.removeItem("rc_tables");
+  localStorage.removeItem("rc_bookings");
+  localStorage.removeItem("rc_orders");
+  localStorage.removeItem("rc_reviews");
+  localStorage.removeItem("rc_cart");
+  localStorage.removeItem("rc_menu");
+
+  tables = JSON.parse(JSON.stringify(defaultTables));
+  menu = JSON.parse(JSON.stringify(defaultMenu));
+  bookings = [];
+  orders = [];
+  reviews = [];
+  cart = [];
+  coupon = "";
+
+  saveAll();
+  renderTables();
+  renderMenu();
+  renderCart();
+  renderReviews();
+  renderAdmin();
+
+  alert("Demo data has been reset.");
+}
+
+/* ==========================================
+   END OF RICH CALORIES SYSTEM
+========================================== */
+
+
+</script>
+</body>
+</html>
